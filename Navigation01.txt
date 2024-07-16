@@ -1,0 +1,160 @@
+To used Navigation 
+npm i @react-navigation/native
+npm i react-native-screens react-native-safe-area-context
+
+we have three types of Navigation
+Stack,Drawer,BottonTab
+
+
+1.Stack Navigation------
+
+npm i @react-navigation/native-stack
+
+const Stack  = createNativeStackNavigator()
+   <NavigationCOntainer>
+      <Stack.Navigator initialRouteName="Home" >
+         <Stack.Screen name="Home" componenet={HomeScreen}>
+      </Stack.Navigator>
+   </NavigationCOntainer>
+
+
+they passing the props inside every stack component
+Ex: Home(props){
+   onPress={()=>props.navigation.navigate("Login", {key:we can pass data also})}
+}
+    Login(props){
+      props.route.params
+    }
+
+
+ <!-- Stacks Naviagtion Code    -->
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          title: 'Home Screen this way',
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+            color: 'white',
+          },
+          headerTitleAlign: 'center',
+        }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{
+            headerTitle: props => <Button title="Left" />,
+            headerRight: () => <Header/>,
+            title: 'Login Screen this way',
+            headerStyle: {
+              backgroundColor: 'grey',
+            },
+            headerTitleStyle: {
+              fontSize: 20,
+              color: 'white',
+            },
+            // headerTitleAlign:"center",
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+
+
+
+
+
+2. Tab Navigation--------
+
+npm install @react-navigation/material-bottom-tabs react-native-paper react-native-vector-icons
+
+
+const Tab = createMaterialBottomTabNavigator();
+   <NavigationContainer>
+        <Tab.Navigator>
+            <Tab.Screen name='Home' component={HomeTab} />
+            <Tab.Screen name='Login' component={LoginTab} />
+        </Tab.Navigator>
+      </NavigationContainer>
+   <NavigationContainer>
+
+
+
+   <!-- Tab Navigation Code -->
+      <Tab.Navigator screenOptions={{
+        
+        tabBarActiveTintColor:"red",
+        tabBarInactiveTintColor:"black",
+        tabBarInactiveBackgroundColor:"cyan",
+        tabBarActiveBackgroundColor:"cyan",
+        headerShown:false,
+        tabBarLabelStyle:{
+          fontSize:10,
+          padding:5,
+          fontWeight:"bold"
+        },
+        tabBarStyle:{
+          height:60
+        }
+      }}  >
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarIcon: ({focused})=>(
+              <Ionicons name='home' size={28} color={focused ? "yellow":"black"} />
+            )
+          }}
+        />
+        <Tab.Screen name="About" component={About} options={{}} />
+      </Tab.Navigator>
+    </NavigationContainer>
+
+
+
+
+3. Drawer Navigation----------
+
+npm install @react-navigation/native;   
+
+npm install react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+npm i @react-navigation/drawer
+
+npm i react-native-reanimation@~2..2.0
+
+plugins: [ 'react-native-reanimated/plugin ],
+
+import 'react-native-gesture-handler'
+
+npm i react-native-paper
+
+
+
+const Drawer = createDrawerNavigator();
+<NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+      </Drawer.Navigator>
+</NavigationContainer>
+
+
+
+options={
+   tabBarActiveTintColor:"red",
+  tabBarInactiveTintColor:"black",
+  tabBarInactiveBackgroundColor:"cyan",
+  tabBarActiveBackgroundColor:"cyan",
+  headerShown:false,
+  tabBarLabelStyle:{
+    fontSize:10,
+    padding:5,
+    fontWeight:"bold"
+  },
+  tabBarStyle:{
+    height:60
+  }
+}
