@@ -1,0 +1,63 @@
+export type RootStackPramList = {
+  Home: undefined;
+  Details: {product: any};
+};
+
+const Stack = createNativeStackNavigator<RootStackPramList>();
+
+
+In Home Component --
+
+type HomeProps = NativeStackScreenProps<RootStackPramList,"Home"> 
+
+export default function Home({navigation}: HomeProps) 
+
+
+
+How to used AsyncStorage ?
+
+npm install @react-native-async-storage/async-storage; 
+
+ const setData = async () =>{
+    await AsyncStorage.setItem("name","ravi");
+  }
+
+  const removeData  = async () => {
+    console.warn(await AsyncStorage.getItem("name"))
+  }
+
+
+
+
+npm i redux
+npm i react-redux
+npm install @reduxjs/toolkit
+
+	
+Component->action->reducer->store->component
+
+constant.js : export const ADD_CART = "add_cart"
+
+action.js : function addCart(item){ 
+			return { type: ADD_CART, payload:item }
+			 }
+
+reducer.js : export const cartReducer = (state=initialState, action)=>{
+				
+			switch(action.type){
+			case ADD_CART: 
+				return [...state,action.payload]
+				}
+		}
+
+rootReducer.js : export default combineReducers({ cart: cartReducer  })
+
+store.js : const store = configureStore({ reducer: rootReducer  })
+
+<Provider store={store} >
+<App/>
+</Provider>
+
+
+To used and dispatch the addtocart -> dispatch(addCart(i))
+To Select the  cart state -> useSelector((state)=> state.cart)
