@@ -118,21 +118,18 @@ const Tab = createMaterialBottomTabNavigator();
 3. Drawer Navigation----------
 
 npm install @react-navigation/native;   
-
-npm install react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+npm install react-native-screens react-native-safe-area-context
 
 npm i @react-navigation/drawer
+npm install react-native-gesture-handler react-native-reanimated
 
-npm i react-native-reanimation@~2..2.0
+plugins: ['react-native-reanimated/plugin'],
 
-plugins: [ 'react-native-reanimated/plugin ],
-
-import 'react-native-gesture-handler'
-
-npm i react-native-paper
+// Only import react-native-gesture-handler on native platforms
+import 'react-native-gesture-handler';
 
 
-
+--Sample CODE--
 const Drawer = createDrawerNavigator();
 <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
@@ -140,6 +137,29 @@ const Drawer = createDrawerNavigator();
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       </Drawer.Navigator>
 </NavigationContainer>
+
+
+ screenOptions={{
+          drawerStyle: {
+            // backgroundColor:"red"
+          },
+          headerStyle: {
+            // backgroundColor:"#fff"
+          },
+          drawerContentStyle: {
+            // backgroundColor:"yellow"
+          },
+          headerTitleStyle: {
+            color: 'black',
+          },
+          headerBackgroundContainerStyle: {
+            borderColor: 'black',
+            borderWidth: 1,
+          },
+          drawerActiveTintColor:"black",
+          drawerInactiveBackgroundColor:"white",
+          
+        }}
 
 
 
