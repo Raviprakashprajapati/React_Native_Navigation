@@ -5,6 +5,11 @@ npm i react-native-screens react-native-safe-area-context
 we have three types of Navigation
 Stack,Drawer,BottonTab
 
+TO used Icons in Navigation or Other
+npm install  react-native-vector-icons
+
+Edit android/app/build.gradle (NOT android/build.gradle) and add:
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
 1.Stack Navigation------
 
