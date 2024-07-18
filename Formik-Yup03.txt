@@ -1,0 +1,107 @@
+npm i yup;
+
+import * as Yup from "Yup"
+
+const loginSchema = Yup.object().shape({
+    name: Yup.string()
+    .min(3,"Name should be greater than 3 character")
+    .trim().required('Name is required'),
+    password: Yup.string()
+      .trim()
+      .min(4, 'Password must be at least 4 character')
+      .max(10, 'Password must be not more than 10 Character')
+      .required('Password is required'),
+  });
+
+1. To used Yup without Formik ---
+
+    const [name,setName] = useState(")
+    const [password,setPassword] = useState(")
+
+  const handleSubmit = async () => {
+    try {
+
+      await loginSchema.validate(
+        { name, password },
+        { abortEarly: false } // Get all errors
+      );
+      
+      Alert.alert('Success', 'Form is valid');     // If validation passes
+      
+      // Proceed with form submission (e.g., API call)
+
+    } catch (err) {
+    
+      const newErrors = {};   // Extract errors and update state
+      err.inner.forEach((error) => {
+        newErrors[error.path] = error.message;
+      });
+      setErrors(newErrors);
+    }
+  };
+
+To used it in compoenent
+{errors.password && <Text>{errors.password}</Text>}
+
+
+
+2. npm i formik
+
+import {Formik} from 'formik';
+
+
+ <Formik
+        initialValues={{name: '', password: ''}}
+        validationSchema={loginSchema}
+        onSubmit={(values, {resetForm}) => {
+          console.warn(values);
+          resetForm();
+        }}>
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+        }) => (
+          <View style={styles.container}>
+            <Text style={{color: 'white', fontSize: 20, textAlign: 'center'}}>
+              Login
+            </Text>
+            <TextInput
+              placeholder="Enter your name"
+              style={styles.input}
+              value={values.name}
+              onChangeText={handleChange('name')}
+            />
+            {touched.name && errors.name && (
+              <Text style={styles.errorText}>{errors.name}</Text>
+            )}
+
+            <TextInput
+              placeholder="Enter your password"
+              style={styles.input}
+              value={values.password}
+              onChangeText={handleChange('password')}
+              secureTextEntry
+            />
+            {touched.password && errors.password && (
+              <Text style={styles.errorText}>{errors.password}</Text>
+            )}
+            <Pressable onPress={() => handleSubmit()}>
+              <Text style={styles.button}>Submit</Text>
+            </Pressable>
+          </View>
+        )}
+      </Formik>
+
+
+
+
+3. AsyncStorage
+
+npm i @react-native-async-storage/async-storage
+
+await AsyncStorage.setItem("user",user)
+await AsyncStorage.getItem("user")
