@@ -8,6 +8,17 @@ Stack,Drawer,BottonTab
 TO used Icons in Navigation or Other
 npm install  react-native-vector-icons
 
+Some common Packages for React-Native
+
+// react native bottom sheet
+// gifted chat
+// victory native charts
+// react-native-toast-message
+// content loader
+// pager-view
+// ract-native progress
+//react native snap carousel
+
 Edit android/app/build.gradle (NOT android/build.gradle) and add:
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
