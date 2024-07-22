@@ -1,0 +1,65 @@
+npm i react-native-reanimated react-native-gesture-handler
+npm i react-native-reanimated-carousel
+
+
+
+import { View, Text, Dimensions, StyleSheet } from 'react-native'
+import React from 'react'
+import Carousel from 'react-native-reanimated-carousel';
+
+const {width} = Dimensions.get("window")
+
+const data = [
+    { key: '1', text: 'Slide 1' },
+    { key: '2', text: 'Slide 2' },
+    { key: '3', text: 'Slide 3' },
+  ];
+
+
+export default function CarouselData() {
+  return (
+    <View style={styles.container} >
+
+        <Carousel
+            width={width}
+            height={200}
+            autoPlay={true}
+            data={data}
+            scrollAnimationDuration={2000}
+            renderItem={({item})=>(
+                <View style={styles.slide}>
+                <Text style={styles.slideText}>{item.text}</Text>
+              </View>
+            )}
+        />
+      
+    </View>
+  )
+}
+
+
+
+const styles = StyleSheet.create({
+    container: {
+      // flex: 1,
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      // backgroundColor: 'black',
+      // padding:10,
+      
+    },
+    slide: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#9DD6EB',
+      borderRadius: 8,
+      padding:10,
+      margin:10,
+    },
+    slideText: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: '#fff',
+    },
+  });
