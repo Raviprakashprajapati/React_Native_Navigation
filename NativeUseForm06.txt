@@ -1,0 +1,45 @@
+react-hook-form
+
+
+const { control, handleSubmit, formState: {errors} } = useForm();
+
+ <Controller
+          control={control}
+          rules={{
+            required: 'Name is required',
+            minLength:{
+                    value:3,
+                    message:"Name should be greater then 3 character"
+                  }
+            }}
+          render={({field: {onChange, onBlue, value}}) => (
+            <TextInput
+              label="Name"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlue}
+              style={{backgroundColor: '#fff', color: 'black'}}
+              mode="outlined"
+              textColor="black"
+              underlineColor="black"
+              outlineColor="black"
+              activeOutlineColor="black"
+              error={!!errors.Name}
+            />
+          )}
+          name="Name"
+          defaultValue={''}
+/>
+       
+       
+ {errors.Name && (
+          <Text
+            style={{
+              fontSize: 12,
+              color: 'red',
+              marginVertical: 7,
+              textAlign: 'center',
+            }}>
+            {errors.Name.message}
+          </Text>
+)}
