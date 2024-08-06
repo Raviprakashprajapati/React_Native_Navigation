@@ -1,7 +1,7 @@
 1. Vector configuration
 2. drawer and stack configuration
 3. Document Picker configuration
-
+4. React native bootsplash
 
 
 
@@ -25,6 +25,8 @@ in info.plist write this-  ,
 <string>We need access to your documents to upload files.</string>
 
 
+4.
+https://dev.to/ajmal_hasan/splash-screen-using-react-native-bootsplash-1pd7
 
 
 
