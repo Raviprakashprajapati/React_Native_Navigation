@@ -4,9 +4,9 @@
 
 
 
-1. React native vector icons configuration = youtube.com/watch?v=VKDkYe7gEMo
+1: React native vector icons configuration = youtube.com/watch?v=VKDkYe7gEMo
 
-2.
+2:
 npm install @react-navigation/native
 npm install @react-navigation/drawer
 npm install @react-navigation/stack
