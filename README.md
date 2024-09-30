@@ -28,6 +28,8 @@ in info.plist write this-  ,
 4.
 https://dev.to/ajmal_hasan/splash-screen-using-react-native-bootsplash-1pd7
 
+https://www.educative.io/answers/how-to-integrate-a-splash-screen-in-react-native-with-bootsplash
+
 
 
 
